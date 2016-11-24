@@ -72,6 +72,7 @@ void DialogWindow::on_AddButton_clicked()
   // почему то здесь
   // ну ладно
   bst.add(*newObj); // работает
+  clog<<newObj->get_bank()<<"  "<<newObj->get_city();
   QMessageBox::information(this, "Nodes", QString::number(bst.nodesCount())); // РАБОТАЕТ - НЕ ТРОГАЙ!!!
 
 
@@ -89,12 +90,12 @@ void DialogWindow::on_AddButton_clicked()
 
 
   // это всем можно убрать потому что форма в любом случаее закроется
-  ui->bankEdit->clear();
-  ui->cityEdit->clear();
-  ui->NameLine->clear();
-  ui->DepthLine->clear();
-  ui->RateSpinBox->clear();
-  ui->PeriodSpinBox->clear();
+//  ui->bankEdit->clear();
+//  ui->cityEdit->clear();
+//  ui->NameLine->clear();
+//  ui->DepthLine->clear();
+//  ui->RateSpinBox->clear();
+//  ui->PeriodSpinBox->clear();
 
   this->close();
 

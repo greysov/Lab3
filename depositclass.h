@@ -15,9 +15,6 @@ protected:
     string period;
     string type;
 
-
-//    friend ostream& operator << (ostream& os, DepositClass d);
-
 public:
     bool operator< (const DepositClass& rval) {
       if (this->dep_amount < rval.dep_amount)

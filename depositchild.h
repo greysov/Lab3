@@ -14,7 +14,7 @@ friend ostream& operator << (ostream& os, DepositChild d);
 public:
 
   void set_bank(string b){bank = b;}
-  void set_city(string s){city = s;}
+  void set_city(string c){city = c;}
 
   string get_bank(){return bank;}
   string get_city(){return city;}
@@ -23,8 +23,9 @@ public:
   DepositChild():DepositClass()
   {
     bank = "%none%";
-    city = "%RU%";
+    city = "%MSK%";
   };
+
   DepositChild(DepositChild& A): DepositClass(A)
   {};
   void cleanObj();

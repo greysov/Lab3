@@ -22,9 +22,3 @@ void DepositClass::cleanObj()
   type = "";
 }
 
-//ostream& operator << (ostream& os, DepositClass d)
-//{
-//  os <<d.get_name()<<"  "<<d.get_dep()<<"  "<<d.get_rate()<<"  "
-//     <<d.get_date()<<"  "<<d.get_period()<<"  "<<d.get_type()<<'\n';
-//  return os;
-//}
