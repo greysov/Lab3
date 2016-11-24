@@ -1,6 +1,0 @@
-    fwe  4  23  02/01/2000   27  Money market account
-    12345  45  11  23/01/2013   35  Call deposit
-    [l,mnhg  456  23  05/09/2000   28  Savings account
-    lmnjuh  456  5  30/01/2000   59  Call deposit
-    ornmsc,c  4567  23  23/01/2000   6  Savings account
-    wrfcdrjk  468  87  04/05/2000   12  Time deposit
