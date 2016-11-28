@@ -38,3 +38,4 @@
     %name%  0  100  %999%  %none%  %none%
     %name%  0  100  %999%  %none%  %none%
     %name%  0  100  %999%  %none%  %none%
+    sdc  123456  12  01/04/2000   23  Transactional account
