@@ -23,10 +23,9 @@ private slots:
   void on_DayDateTimeEdit_editingFinished();
   void on_PeriodSpinBox_editingFinished();
   void on_AddButton_clicked();
-
   void on_bankEdit_editingFinished();
-
   void on_cityEdit_editingFinished();
+
 
 public:
   explicit DialogWindow(QWidget *parent = 0);
@@ -35,6 +34,7 @@ public:
 
 private:
   Ui::DialogWindow *ui;
+
 };
 
 #endif // DIALOGWINDOW_H

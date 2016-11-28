@@ -9,7 +9,6 @@
 #include <QStandardItem>
 #include <QStandardItemModel>
 
-#pragma once
 
 MainWindow::MainWindow(QWidget *parent) :
   QMainWindow(parent),
@@ -24,11 +23,13 @@ MainWindow::MainWindow(QWidget *parent) :
   this->setFixedHeight(450);
   this->setFixedWidth(855);  //655
 
+  ui->tableWidget->setSelectionBehavior(QAbstractItemView::SelectRows);
+  //ui->tableWidget->setSelectionBehavior(QAbstractItemView::SingleSelection);
   ui->tableWidget->setFixedHeight(430);
   ui->tableWidget->setFixedWidth(828);
 
   ui->tableWidget->setColumnCount(8);
-  ui->tableWidget->setRowCount(40);
+  ui->tableWidget->setRowCount(0);
   ui->tableWidget->setEditTriggers(QAbstractItemView::NoEditTriggers);
 
 
@@ -48,8 +49,14 @@ void MainWindow::on_AddButton_clicked()
   delete dwin;
 }
 
+
+
 void MainWindow::fillTheRow(DepositChild& B)
 {
+  //static int i_row = 0;
+  const int i_row = ui->tableWidget->rowCount();
+  ui->tableWidget->setRowCount(i_row + 1);
+
   QString b = B.get_bank().c_str();
   QString c = B.get_city().c_str();
   QString n = B.get_name().c_str();
@@ -59,7 +66,7 @@ void MainWindow::fillTheRow(DepositChild& B)
   QString p = B.get_period().c_str();
   QString t = B.get_type().c_str();
 
-  static int i_row = 0;
+
   QTableWidgetItem *item_b = new QTableWidgetItem(b);
   ui->tableWidget->setItem(i_row, 0, item_b);
 
@@ -84,6 +91,28 @@ void MainWindow::fillTheRow(DepositChild& B)
   QTableWidgetItem *item_t = new QTableWidgetItem(t);
   ui->tableWidget->setItem(i_row, 7, item_t);
 
-  i_row++;
-
 }
+
+void MainWindow::on_deleteButton_clicked()
+{
+ // QTableWidget::removeRow(ui->tableWidget->currentRow());
+  int x = ui->tableWidget->currentRow();
+  clog<<"SELECTED ROW "<<x;
+  ui->tableWidget->removeRow(x);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -40,5 +40,7 @@ public slots:
 public:
   Ui::MainWindow *ui;
 
+private slots:
+  void on_deleteButton_clicked();
 };
 #endif //MAINWINDOW_H

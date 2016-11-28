@@ -7,53 +7,13 @@
 #include "depositchild.h"
 #include <fstream>
 
-ofstream ofile;
-
 DepositChild *newObj;
-
-/*
-DepositChild *test;
-DepositChild *te;
-DepositChild *ter;
-DepositChild *tef;
-*/
-
 
 DialogWindow::DialogWindow(QWidget *parent): QDialog(parent), ui(new Ui::DialogWindow)
 {
   ui->setupUi(this);
   newObj = new DepositChild;
 
-  /*
-  ter = new DepositChild();
-  ter->set_name("Keka");
-  ter->set_dep(3000);
-
-  test = new DepositChild();
-  test->set_name("Vasya");
-  test->set_dep(1000);
-
-  te = new DepositChild();
-  te->set_name("Ololo");
-  te->set_dep(2000);
-
-  tef = new DepositChild();
-  tef->set_name("Franku");
-  tef->set_dep(4000);
-
-  static BST<DepositChild> bb;
-  bb.add(*ter);
-  bb.add(*test);
-  bb.add(*te);
-  bb.add(*tef);
-
-  bb.print();
-
-  QMessageBox::information(this, "onTree", "Printed?????");
-
-//  delete te;
-//  delete test;
-*/
   connect(ui->bankEdit, SIGNAL(textChanged(QString)), this, SLOT(on_bankEdit_editingFinished()));
   connect(ui->cityEdit, SIGNAL(textChanged(QString)), this, SLOT(on_cityEdit_editingFinished()));
   connect(ui->NameLine, SIGNAL(textChanged(QString)), this, SLOT(on_NameLine_editingFinished()));
@@ -73,12 +33,13 @@ void DialogWindow::on_AddButton_clicked()
   // ну ладно
   bst.add(*newObj); // работает
   clog<<newObj->get_bank()<<"  "<<newObj->get_city();
-  QMessageBox::information(this, "Nodes", QString::number(bst.nodesCount())); // РАБОТАЕТ - НЕ ТРОГАЙ!!!
+  QMessageBox::information(this, "Nodes", QString::number(bst.nodesCount()));
 
 
   ofstream ofile;
   ofile.open("/Users/alinacodzy/Documents/5OOP_C++/gui1/Table2/DATA1.txt", ios_base::app);
   ofile<<*newObj;
+  ofile.close();
 
 // тут вызвать метод, добавляющий этоу ноду в таблицу.
 // в паблик метод класса MainWindow передаем эту самую ноду
@@ -87,15 +48,6 @@ void DialogWindow::on_AddButton_clicked()
   main_w->fillTheRow(*newObj);
 
   newObj->cleanObj();
-
-
-  // это всем можно убрать потому что форма в любом случаее закроется
-//  ui->bankEdit->clear();
-//  ui->cityEdit->clear();
-//  ui->NameLine->clear();
-//  ui->DepthLine->clear();
-//  ui->RateSpinBox->clear();
-//  ui->PeriodSpinBox->clear();
 
   this->close();
 
