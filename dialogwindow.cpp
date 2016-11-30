@@ -42,13 +42,10 @@ void DialogWindow::on_AddButton_clicked()
            + newObj->get_type()+'\n';
 
 
-  QFile file("/Table2/data.txt");
+  QFile file("C:\\data.txt");     //спросить что происходит почему файл не создается без полного пути
   file.write(S.c_str());
 
-
-
   main_w->fillTheRow(*newObj);
-
   newObj->cleanObj();
 
   this->close();
