@@ -11,7 +11,7 @@ DepositChild *newObj;
 
 DialogWindow::DialogWindow(QWidget *parent): QDialog(parent), ui(new Ui::DialogWindow)
 {
-  ui->setupUi(this);
+  ui->setupUi(this);              //   создает диалоговое окно
   newObj = new DepositChild;
 
   connect(ui->bankEdit, SIGNAL(textChanged(QString)), this, SLOT(on_bankEdit_editingFinished()));
@@ -28,11 +28,10 @@ DialogWindow::DialogWindow(QWidget *parent): QDialog(parent), ui(new Ui::DialogW
 void DialogWindow::on_AddButton_clicked()
 {
   static BST<DepositChild> bst;
-  bst.add(*newObj); // работает
+  bst.add(*newObj);
   clog<<newObj->get_bank()<<"  "<<newObj->get_city();
- // QMessageBox::information(this, "Nodes", QString::number(bst.nodesCount()));
 
-  string S = newObj->get_bank()+","
+  string S = newObj->get_bank()+","                   //  парсит наш объект
            + newObj->get_city()+","
            + newObj->get_name()+","
            + (QString::number(newObj->get_dep())).toStdString()+","
@@ -42,8 +41,8 @@ void DialogWindow::on_AddButton_clicked()
            + newObj->get_type()+'\n';
 
 
-  QFile file("C:\\data.txt");     //спросить что происходит почему файл не создается без полного пути
-  file.write(S.c_str());
+  QFile file("C:\\data.txt");     //  спросить что происходит почему файл не создается без полного пути
+  file.write(S.c_str());          //  пишет в файл
 
   main_w->fillTheRow(*newObj);
   newObj->cleanObj();
@@ -57,10 +56,10 @@ DialogWindow::~DialogWindow()
   delete ui;
 }
 
-void DialogWindow::on_NameLine_editingFinished()
-{
-   QString str = ui->NameLine->text();
-   newObj->set_name(str.toStdString());
+void DialogWindow::on_NameLine_editingFinished()      //    это все обработчики полей в диалоговом окне
+{                                                     //    QRegx не используется
+   QString str = ui->NameLine->text();                //    можно вводить любе данные
+   newObj->set_name(str.toStdString());               //    и ничего не упадет
 }
 
 void DialogWindow::on_DepthLine_editingFinished()

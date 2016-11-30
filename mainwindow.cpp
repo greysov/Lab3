@@ -14,27 +14,22 @@ MainWindow::MainWindow(QWidget *parent) :
   QMainWindow(parent),
   ui(new Ui::MainWindow)
 {
-  ui->setupUi(this);
+  ui->setupUi(this);                      //  настраиваем начальный вид главного окна
 
   QHBoxLayout *layout = new QHBoxLayout;
-
   layout->addWidget(ui->tableWidget);
 
   this->setFixedHeight(450);
-  this->setFixedWidth(855);  //655
+  this->setFixedWidth(855);
 
   ui->tableWidget->setSelectionBehavior(QAbstractItemView::SelectRows);
-  //ui->tableWidget->setSelectionBehavior(QAbstractItemView::SingleSelection);
   ui->tableWidget->setFixedHeight(430);
   ui->tableWidget->setFixedWidth(828);
 
   ui->tableWidget->setColumnCount(8);
-  ui->tableWidget->setRowCount(0);
+  ui->tableWidget->setRowCount(0);        //   начальная высота таблицы
   ui->tableWidget->setEditTriggers(QAbstractItemView::NoEditTriggers);
-
-
 }
-
 
 MainWindow::~MainWindow()
 {
@@ -43,19 +38,17 @@ MainWindow::~MainWindow()
 
 void MainWindow::on_AddButton_clicked()
 {
-  DialogWindow *dwin = new DialogWindow;
+  DialogWindow *dwin = new DialogWindow;        // делает диалоговое окно
   dwin->main_w = this;
   dwin->exec();
   delete dwin;
 }
 
-
-
-void MainWindow::fillTheRow(DepositChild& B)
-{
+void MainWindow::fillTheRow(DepositChild& B)    // заполняет строки таблицы
+{                                               // данными из диалогового окна
   //static int i_row = 0;
-  const int i_row = ui->tableWidget->rowCount();
-  ui->tableWidget->setRowCount(i_row + 1);
+  const int i_row = ui->tableWidget->rowCount();// для того чтобы строки в таблице
+  ui->tableWidget->setRowCount(i_row + 1);      // появлялись по мере надобности
 
   QString b = B.get_bank().c_str();
   QString c = B.get_city().c_str();
@@ -65,7 +58,6 @@ void MainWindow::fillTheRow(DepositChild& B)
   QString din = B.get_date().c_str();
   QString p = B.get_period().c_str();
   QString t = B.get_type().c_str();
-
 
   QTableWidgetItem *item_b = new QTableWidgetItem(b);
   ui->tableWidget->setItem(i_row, 0, item_b);
@@ -93,9 +85,8 @@ void MainWindow::fillTheRow(DepositChild& B)
 
 }
 
-void MainWindow::on_deleteButton_clicked()
+void MainWindow::on_deleteButton_clicked()          //  удаляет выделенную строку
 {
- // QTableWidget::removeRow(ui->tableWidget->currentRow());
   int x = ui->tableWidget->currentRow();
   clog<<"SELECTED ROW "<<x;
   ui->tableWidget->removeRow(x);
