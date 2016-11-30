@@ -5,7 +5,7 @@
 #include <QMessageBox>
 #include "mainwindow.h"
 #include "depositchild.h"
-#include <fstream>
+#include <QFile>
 
 DepositChild *newObj;
 
@@ -28,22 +28,24 @@ DialogWindow::DialogWindow(QWidget *parent): QDialog(parent), ui(new Ui::DialogW
 void DialogWindow::on_AddButton_clicked()
 {
   static BST<DepositChild> bst;
-  // создали дерево
-  // почему то здесь
-  // ну ладно
   bst.add(*newObj); // работает
   clog<<newObj->get_bank()<<"  "<<newObj->get_city();
-  QMessageBox::information(this, "Nodes", QString::number(bst.nodesCount()));
+ // QMessageBox::information(this, "Nodes", QString::number(bst.nodesCount()));
+
+  string S = newObj->get_bank()+","
+           + newObj->get_city()+","
+           + newObj->get_name()+","
+           + (QString::number(newObj->get_dep())).toStdString()+","
+           + (QString::number(newObj->get_rate())).toStdString()+","
+           + newObj->get_date()+","
+           + newObj->get_period()+","
+           + newObj->get_type()+'\n';
 
 
-  ofstream ofile;
-  ofile.open("/Users/alinacodzy/Documents/5OOP_C++/gui1/Table2/DATA1.txt", ios_base::app);
-  ofile<<*newObj;
-  ofile.close();
+  QFile file("/Table2/data.txt");
+  file.write(S.c_str());
 
-// тут вызвать метод, добавляющий этоу ноду в таблицу.
-// в паблик метод класса MainWindow передаем эту самую ноду
-// а этод метод уже стаивт там свои дела
+
 
   main_w->fillTheRow(*newObj);
 
