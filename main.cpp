@@ -1,6 +1,8 @@
 #include "mainwindow.h"
 #include <QApplication>
 #include <fstream>
+#include "treeclass.h"
+#include "depositchild.h"
 
 int main(int argc, char *argv[])
 {

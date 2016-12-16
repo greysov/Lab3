@@ -108,6 +108,11 @@ private:
     }
 
 public:
+
+    void operator + (T val) {
+      add(val);
+    }
+
     void add(T val) {
         if (root) {
             this->addHelper(root, val);

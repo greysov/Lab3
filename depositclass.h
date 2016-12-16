@@ -27,6 +27,15 @@ public:
         return true;
       return false;
     }
+
+    bool operator == (const DepositClass& val) {
+      if (this->name == val.name && this->dep_amount == val.dep_amount &&
+          this->rate == val.rate && this->date_in == val.date_in &&
+          this->period == val.period && this->type == val.type)
+        return true;
+      return false;
+    }
+
 public:
     //MARK: - set()
     void set_name(string _name) {name = _name;}
@@ -48,6 +57,7 @@ public:
 
 
 public:
+
   DepositClass(DepositClass& A);
   DepositClass(): name("%name%"), dep_amount(0), rate(100), date_in("%999%"),
   period("%none%"), type("%none%")

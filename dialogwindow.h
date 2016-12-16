@@ -33,6 +33,8 @@ public:
   MainWindow *main_w;
 
 private:
+  void delNode();
+
   Ui::DialogWindow *ui;
 
 };

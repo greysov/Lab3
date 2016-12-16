@@ -19,28 +19,31 @@ class MainWindow : public QMainWindow
 
 public:
 
- //static BST<DepositClass> bst;
- //существовует только одна копия этого члена,
- //сколько бы объектов этого класса ни создавалось.
- //Статический член используется совместно
- //все­ми объектами данного класса. Все статические данные
- //инициализируются нулями при создании первого объекта,
- //и другая инициализация не предусмотрена.
+ /*
+  static BST<DepositClass> bst;
+ существовует только одна копия этого члена,
+ сколько бы объектов этого класса ни создавалось.
+ Статический член используется совместно
+ все­ми объектами данного класса. Все статические данные
+ инициализируются нулями при создании первого объекта,
+ и другая инициализация не предусмотрена.
+
+ */
 void fillTheRow(DepositChild &bst);
 
 
-  explicit MainWindow(QWidget *parent = 0);
+explicit MainWindow(QWidget *parent = 0);
   ~MainWindow();
 
 
 public slots:
   void on_AddButton_clicked();
 
-
 public:
   Ui::MainWindow *ui;
 
 private slots:
   void on_deleteButton_clicked();
+
 };
 #endif //MAINWINDOW_H

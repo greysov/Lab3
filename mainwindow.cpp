@@ -28,7 +28,7 @@ MainWindow::MainWindow(QWidget *parent) :
 
   ui->tableWidget->setColumnCount(8);
   ui->tableWidget->setRowCount(0);        //   начальная высота таблицы
-  ui->tableWidget->setEditTriggers(QAbstractItemView::NoEditTriggers);
+  //ui->tableWidget->setEditTriggers(QAbstractItemView::NoEditTriggers);
 }
 
 MainWindow::~MainWindow()
@@ -90,6 +90,7 @@ void MainWindow::on_deleteButton_clicked()          //  удаляет выде�
   int x = ui->tableWidget->currentRow();
   clog<<"SELECTED ROW "<<x;
   ui->tableWidget->removeRow(x);
+
 }
 
 

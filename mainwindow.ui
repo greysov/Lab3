@@ -100,12 +100,12 @@
     <column/>
     <column/>
    </widget>
-   <widget class="QWidget" name="layoutWidget">
+   <widget class="QWidget" name="">
     <property name="geometry">
      <rect>
-      <x>10</x>
-      <y>10</y>
-      <width>254</width>
+      <x>11</x>
+      <y>11</y>
+      <width>168</width>
       <height>26</height>
      </rect>
     </property>
@@ -121,13 +121,6 @@
       <widget class="QPushButton" name="deleteButton">
        <property name="text">
         <string>Delete</string>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QPushButton" name="EditButton">
-       <property name="text">
-        <string>Edit</string>
        </property>
       </widget>
      </item>

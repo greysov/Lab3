@@ -28,21 +28,30 @@ DialogWindow::DialogWindow(QWidget *parent): QDialog(parent), ui(new Ui::DialogW
 void DialogWindow::on_AddButton_clicked()
 {
   static BST<DepositChild> bst;
-  bst.add(*newObj);
+
+  //bst.add(*newObj);
+  bst+(*newObj);    // оператор + перегружен функцией add()
+
   clog<<newObj->get_bank()<<"  "<<newObj->get_city();
 
-  string S = newObj->get_bank()+","                   //  парсит наш объект
-           + newObj->get_city()+","
-           + newObj->get_name()+","
-           + (QString::number(newObj->get_dep())).toStdString()+","
-           + (QString::number(newObj->get_rate())).toStdString()+","
-           + newObj->get_date()+","
-           + newObj->get_period()+","
-           + newObj->get_type()+'\n';
+  string S =  newObj->get_bank()+","                   //  парсит наш объект
+      + newObj->get_city()+","
+      + newObj->get_name()+","
+      + (QString::number(newObj->get_dep())).toStdString()+","
+      + (QString::number(newObj->get_rate())).toStdString()+","
+      + newObj->get_date()+","
+      + newObj->get_period()+","
+      + newObj->get_type()+'\n';
 
 
-  QFile file("C:\\data.txt");     //  спросить что происходит почему файл не создается без полного пути
-  file.write(S.c_str());          //  пишет в файл
+  QFile file("data.txt");     //  спросить что происходит почему файл не создается без полного пути
+  file.open(QIODevice::WriteOnly | QIODevice::Text);
+  if(file.exists())
+    {
+      file.write(S.c_str());          //  пишет в файл
+      clog << "File exists!!!!!";
+    }
+  else clog << "File is not created :c";
 
   main_w->fillTheRow(*newObj);
   newObj->cleanObj();
@@ -97,3 +106,17 @@ void DialogWindow::on_cityEdit_editingFinished()
 {
     newObj->set_city(ui->cityEdit->text().toStdString());
 }
+void delNode()
+{
+  //bst.delete()
+}
+
+
+
+
+
+
+
+
+
+
